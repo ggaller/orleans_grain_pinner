@@ -19,7 +19,6 @@ namespace OrleansGrainPinner
 
         public override Task OnActivateAsync() 
         { 
-            this.
             _logger.LogInformation("I'm activated!");
             return Task.CompletedTask;
         }
