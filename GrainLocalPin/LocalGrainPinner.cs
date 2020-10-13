@@ -10,10 +10,10 @@ using Orleans.Services;
 
 namespace OrleansGrainPinner
 {
-    internal interface ILocalGrainPinner : IGrainService
-    {}
+    public interface ILocalGrainPinner : IGrainService
+    { }
 
-    internal class LocalGrainPinner : GrainService, ILocalGrainPinner
+    public class LocalGrainPinner : GrainService, ILocalGrainPinner
     {
         private readonly IGrainFactory _grainFactory;
 
@@ -23,7 +23,8 @@ namespace OrleansGrainPinner
 
         private IDisposable _timerDisposer;
 
-        public LocalGrainPinner(IGrainFactory grainFactory, IOptions<LocalPinOptions> options, IGrainIdentity id, Silo silo, ILoggerFactory loggerFactory) 
+        public LocalGrainPinner(IGrainFactory grainFactory, IOptions<LocalPinOptions> options,
+                                    IGrainIdentity id, Silo silo, ILoggerFactory loggerFactory)
             : base(id, silo, loggerFactory)
         {
             _grainFactory = grainFactory ?? throw new ArgumentNullException(nameof(grainFactory));

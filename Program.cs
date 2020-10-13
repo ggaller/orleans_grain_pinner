@@ -15,16 +15,11 @@ namespace OrleansGrainPinner
                 .UseOrleans(siloBuilder =>
                 {
                     siloBuilder.UseLocalhostClustering()
-                            .AddGrainPinner()
                             .AddLocalPinnedGrain<IPinnedGrain>();
                 })
                 .ConfigureLogging(logging =>
                 {
                     logging.AddConsole();
-                })
-                .ConfigureServices(services =>
-                {
-                    
                 })
                 .UseConsoleLifetime()
                 .Build();

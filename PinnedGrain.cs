@@ -15,22 +15,31 @@ namespace OrleansGrainPinner
     {
         private readonly ILogger _logger;
 
-        public PinnedGrain(ILogger<PinnedGrain> logger) => _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        public PinnedGrain(ILogger<PinnedGrain> logger)
+            => _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-        public override Task OnActivateAsync() 
-        { 
+        public override Task OnActivateAsync()
+        {
             _logger.LogInformation("I'm activated!");
             return Task.CompletedTask;
         }
 
-        public override Task OnDeactivateAsync() 
-        { 
+        public override Task OnDeactivateAsync()
+        {
             _logger.LogInformation("I'm deactivated!");
             return Task.CompletedTask;
         }
 
-        Task ILocalPinnedGrain.InitPin() => Task.CompletedTask;
+        Task ILocalPinnedGrain.InitPin()
+        {
+            _logger.LogInformation("I'm pinned!");
+            return Task.CompletedTask;
+        }
 
-        Task ILocalPinnedGrain.KeepAlivePin() => Task.CompletedTask;
+        Task ILocalPinnedGrain.KeepAlivePin()
+        {
+            _logger.LogInformation("I'm still alive!");
+            return Task.CompletedTask;
+        }
     }
 }
